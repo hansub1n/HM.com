@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap");
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+header {
+    background-color: #f0f0f0;
+    width: 100%;
+    top: 0;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+}
+h1 {
+    margin: 20px 0;
+}
+form {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+form > label {
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+form > .search_input {
+    width: 230px;
+    height: 70%;
+    border: none;
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+
+}
+
+form > .search_btn {
+    background-color: #FDD370;
+    height: 40px;
+    width: 40px;
+    border: none;
+    border-radius: 50%;
+
+    margin-left: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+}
+form > .search_btn:hover {
+    cursor: pointer;
+    background-color: #eac367ef;
+}
+section {
+    margin: 200px 30px 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* .movie_card {
+    background-color: #D3D3D3;
+    border-radius: 10px;
+    padding: 20px;
+    width: 600px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.movie_card > img {
+    width: 300px;
+    height: 100px;
+    object-fit: contain;
+} */
