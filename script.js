@@ -48,6 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
             movie_list.innerHTML = temp_html;
             movie_card = document.getElementsByClassName('movie_card');
 
+            // 영화 카드 클릭시 alert
+            for (let i = 0; i < movie_card.length; i++) {
+                movie_card[i].addEventListener('click', () => {
+                    alert(`영화 id: ${movie_card[i].id}`);
+                });
+            }
+
             console.log(movieCard);
         })
         .catch(error => {
@@ -56,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 영화 검색 ui 구현
     function searchMovie() {
         const search_value = search_input.value.toUpperCase();
         const matchingMovies = [];
