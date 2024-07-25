@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src='${img_url}'>
                         <div class="info">
                             <h3>${title}</h3>
-                            <p>${star}</p>
+                            <p>⭐${star}</p>
                             <p>${overview}</p>
                         </div>
                     </a>
