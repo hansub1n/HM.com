@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 temp_html += `
                 <div class="movie_card" id="${id}">
-                    <a>
+                    <div class="content">
                         <img src='${img_url}'>
                         <div class="info">
                             <h3>${title}</h3>
-                            <p>⭐${star}</p>
-                            <p>${overview}</p>
+                            <p class="star">⭐${star}</p>
+                            <p class="overview">${overview}</p>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 `;
             });
