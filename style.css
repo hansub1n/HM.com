@@ -24,6 +24,7 @@ header {
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
     padding: 0 100px 0 50px;
     box-sizing: border-box;
+    z-index: 9000;
 }
 header .com {
     display: flex;
@@ -97,9 +98,13 @@ section {
     width: 280px;
     height: 370px;
     overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s background-color 0.3s;
 }
 .movie_card:hover {
     cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 .movie_card .content {
     display: flex;
@@ -110,7 +115,7 @@ section {
     gap: 10px;
 }
 .movie_card .content > img {
-border-radius: 20px;
+    border-radius: 20px;
 }
 .movie_card .content .info > h3 {
     margin: 0;
@@ -122,6 +127,10 @@ border-radius: 20px;
     font-size: 12px;
     color: rgb(117, 117, 117);
     text-align: center;
+    transition: color 0.2s;
+}
+.movie_card:hover .content .info > .star {
+    color: black;
 }
 .movie_card .content .info > .overview {
     margin: 0px;

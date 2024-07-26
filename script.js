@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1'
         ]
 
-    
+
+        // Promise.all: 다 준비 될 때까지 기다림
         Promise.all(urls.map(url => fetch(url, options)))
         .then(responses => Promise.all(responses.map(response => response.json())))
         .then(dataArray => {
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 movieCard.forEach(item => {
                     let title = item['title'];
+                    // 해당 제목 가지고 있는지 확인 -> 중복X
                     if(seenTitles.has(title)) return;
 
                     seenTitles.add(title);
@@ -77,20 +79,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 영화 검색 ui 구현
     function searchMovie() {
-        const search_value = search_input.value.toUpperCase();
+        const search_value = search_input.value.toUpperCase().normalize('NFKC');
         const matchingMovies = [];
 
         for (let i = 0; i < movie_card.length; i++) {
             const card = movie_card[i];
-            const card_title = card.getElementsByTagName('h3')[0].innerText.toUpperCase();
-            if (card_title.indexOf(search_value) > -1) {
+            const card_title = card.getElementsByTagName('h3')[0].innerText.toUpperCase().normalize('NFKC');
+            if (card_title.includes(search_value)) {
                 card.style.display = 'inline-block';
                 matchingMovies.push(card_title);
             } else {
                 card.style.display = 'none';
             }
         }
-        console.log('Matching movies: ', matchingMovies); // 일치하는 영화 제목 콘솔에 출력
+        // 일치하는 영화 제목 콘솔에 출력 (확인용)
+        console.log('Matching movies: ', matchingMovies);
     }
     
     search_input.addEventListener('input', () => {
