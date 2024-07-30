@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const  search = document.getElementById('search');
-    const  search_input = document.getElementById('search_input');
-    const  movie_list = document.getElementById('movie_list');
+    const  searchInput = document.getElementById('searchInput');
+    const  movieList = document.getElementById('movieList');
     let movie_card = [];
     
 
@@ -39,15 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     seenTitles.add(title);
 
-                    let img_url = 'https://image.tmdb.org/t/p/w500' + item['backdrop_path'];
+                    let imgUrl = 'https://image.tmdb.org/t/p/w500' + item['backdrop_path'];
                     let star = item['vote_average'];
                     let overview = item['overview'];
                     let id = item['id'];
 
                     temp_html += `
-                    <div class="movie_card" id="${id}">
+                    <div class="movieCard" id="${id}">
                         <div class="content">
-                            <img src='${img_url}'>
+                            <img src='${imgUrl}'>
                             <div class="info">
                                 <h3>${title}</h3>
                                 <p class="star">⭐${star}</p>
@@ -59,13 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             })
 
-            movie_list.innerHTML = temp_html;
-            movie_card = document.getElementsByClassName('movie_card');
+            movieList.innerHTML = temp_html;
+            movieCard = document.getElementsByClassName('movieCard');
 
             // 영화 카드 클릭시 alert
-            for (let i = 0; i < movie_card.length; i++) {
-                movie_card[i].addEventListener('click', () => {
-                    alert(`영화 id: ${movie_card[i].id}`);
+            for (let i = 0; i < movieCard.length; i++) {
+                movieCard[i].addEventListener('click', () => {
+                    alert(`영화 id: ${movieCard[i].id}`);
                 });
             }
 
@@ -79,15 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 영화 검색 ui 구현
     function searchMovie() {
-        const search_value = search_input.value.toUpperCase().normalize('NFKC');
+        const searchValue = searchInput.value.toUpperCase().normalize('NFKC');
         const matchingMovies = [];
 
-        for (let i = 0; i < movie_card.length; i++) {
-            const card = movie_card[i];
-            const card_title = card.getElementsByTagName('h3')[0].innerText.toUpperCase().normalize('NFKC');
-            if (card_title.includes(search_value)) {
-                card.style.display = 'inline-block';
-                matchingMovies.push(card_title);
+        for (let i = 0; i < movieCard.length; i++) {
+            const card = movieCard[i];
+            const cardTitle = card.getElementsByTagName('h3')[0].innerText.toUpperCase().normalize('NFKC');
+            if (cardTitle.includes(searchValue)) {
+                card.style.display = 'block';
+                matchingMovies.push(cardTitle);
             } else {
                 card.style.display = 'none';
             }
@@ -96,14 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Matching movies: ', matchingMovies);
     }
     
-    search_input.addEventListener('input', () => {
+    searchInput.addEventListener('input', () => {
         searchMovie();
     });
 
     search.addEventListener('submit', (event) => {
         event.preventDefault();
         searchMovie();
-        search_input.value = "";
+        searchInput.value = "";
     });
 
     fetchMovie();

@@ -56,7 +56,7 @@ form > label {
     margin-right: 10px;
     font-size: 15px;
 }
-form > .search_input {
+form > .searchInput {
     width: 250px;
     height: 40%;
     border: none;
@@ -66,7 +66,7 @@ form > .search_input {
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
 
 }
-form > .search_btn {
+form > .searchBtn {
     background-color: #FDD370;
     height: 36px;
     width: 47px;
@@ -78,7 +78,7 @@ form > .search_btn {
     transition: background-color 0.3s ease;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
 }
-form > .search_btn:hover {
+form > .searchBtn:hover {
     cursor: pointer;
     background-color: #eac367ef;
 }
@@ -91,7 +91,7 @@ section {
     justify-content: center;
     gap: 45px;
 }
-.movie_card {
+.movieCard {
     background-color: #D3D3D3;
     border-radius: 30px;
     padding: 13px;
@@ -100,13 +100,13 @@ section {
     overflow: hidden;
     transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
 }
-.movie_card:hover {
+.movieCard:hover {
     cursor: pointer;
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     background-color: rgba(0, 0, 0, 0.5);
 }
-.movie_card .content {
+.movieCard .content {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -114,25 +114,25 @@ section {
     object-fit: cover;
     gap: 10px;
 }
-.movie_card .content > img {
+.movieCard .content > img {
     border-radius: 20px;
 }
-.movie_card .content .info > h3 {
+.movieCard .content .info > h3 {
     margin: 0;
     font-size: 16px;
     text-align: center;
 }
-.movie_card .content .info > .star {
+.movieCard .content .info > .star {
     margin: 3px 0 12px 0;
     font-size: 12px;
     color: rgb(117, 117, 117);
     text-align: center;
     transition: color 0.2s;
 }
-.movie_card:hover .content .info > .star {
+.movieCard:hover .content .info > .star {
     color: black;
 }
-.movie_card .content .info > .overview {
+.movieCard .content .info > .overview {
     margin: 0px;
     font-size: 10px;
     text-align: justify;
