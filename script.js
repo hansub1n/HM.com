@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const  search = document.getElementById('search');
     const  searchInput = document.getElementById('searchInput');
     const  movieList = document.getElementById('movieList');
-    let movie_card = [];
+    let movieCardList = [];
     
 
-    function fetchMovie() {
+    function fetchMovies() {
         const API_KEY = 'cb0e01db7bf2b11a14af40c71fbcfd57';
 
         const options = {
@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
         Promise.all(urls.map(url => fetch(url, options)))
         .then(responses => Promise.all(responses.map(response => response.json())))
         .then(dataArray => {
-            let temp_html = "";
+            let tempHtml = "";
             const seenTitles = new Set();
             
             dataArray.forEach(response => {
-                let movieCard = response['results'];
+                let movieReults = response['results'];
 
-                movieCard.forEach(item => {
+                movieReults.forEach(item => {
                     let title = item['title'];
                     // 해당 제목 가지고 있는지 확인 -> 중복X
                     if(seenTitles.has(title)) return;
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     let overview = item['overview'];
                     let id = item['id'];
 
-                    temp_html += `
+                    tempHtml += `
                     <div class="movieCard" id="${id}">
                         <div class="content">
                             <img src='${imgUrl}'>
@@ -59,15 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             })
 
-            movieList.innerHTML = temp_html;
-            movieCard = document.getElementsByClassName('movieCard');
+            movieList.innerHTML = tempHtml;
+            movieCardList = document.querySelectorAll('.movieCard');
 
             // 영화 카드 클릭시 alert
-            for (let i = 0; i < movieCard.length; i++) {
-                movieCard[i].addEventListener('click', () => {
-                    alert(`영화 id: ${movieCard[i].id}`);
+            movieCardList.forEach(card => {
+                card.addEventListener('click', () => {
+                    alert(`영화 id: ${card.id}`);
                 });
-            }
+            });
 
             console.log(dataArray);
         })
@@ -82,16 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchValue = searchInput.value.toUpperCase().normalize('NFKC');
         const matchingMovies = [];
 
-        for (let i = 0; i < movieCard.length; i++) {
-            const card = movieCard[i];
-            const cardTitle = card.querySelector(".title").innerText.toUpperCase().normalize('NFKC');
+        movieCardList.forEach(card => {
+            const cardTitle = card.querySelector('.title').innerText.toUpperCase().normalize('NFKC');
             if (cardTitle.includes(searchValue)) {
                 card.style.display = 'block';
                 matchingMovies.push(cardTitle);
             } else {
                 card.style.display = 'none';
             }
-        }
+        });
         // 일치하는 영화 제목 콘솔에 출력 (확인용)
         console.log('Matching movies: ', matchingMovies);
     }
@@ -106,5 +105,5 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.value = "";
     });
 
-    fetchMovie();
+    fetchMovies();
 })
