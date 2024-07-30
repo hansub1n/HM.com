@@ -102,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
     search.addEventListener('submit', (event) => {
         event.preventDefault();
         searchMovie();
-        searchInput.value = "";
     });
 
     fetchMovies();
