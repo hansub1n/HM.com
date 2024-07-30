@@ -38,6 +38,10 @@ header .com h1 {
     font-size: 40px;
     margin: 0;
 }
+header .com h1:hover {
+    cursor: pointer;
+}
+
 header .com h6 {
     margin: 0;
     padding-top: 20px;
