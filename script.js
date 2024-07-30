@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="content">
                             <img src='${imgUrl}'>
                             <div class="info">
-                                <h3>${title}</h3>
+                                <h3 class="title">${title}</h3>
                                 <p class="star">⭐${star}</p>
                                 <p class="overview">${overview}</p>
                             </div>
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (let i = 0; i < movieCard.length; i++) {
             const card = movieCard[i];
-            const cardTitle = card.getElementsByTagName('h3')[0].innerText.toUpperCase().normalize('NFKC');
+            const cardTitle = card.querySelector(".title").innerText.toUpperCase().normalize('NFKC');
             if (cardTitle.includes(searchValue)) {
                 card.style.display = 'block';
                 matchingMovies.push(cardTitle);

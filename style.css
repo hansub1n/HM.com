@@ -117,7 +117,7 @@ section {
 .movieCard .content > img {
     border-radius: 20px;
 }
-.movieCard .content .info > h3 {
+.movieCard .content .info > .title {
     margin: 0;
     font-size: 16px;
     text-align: center;
